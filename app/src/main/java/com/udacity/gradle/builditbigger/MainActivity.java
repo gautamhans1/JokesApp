@@ -1,16 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.Jokes;
-
-import gradle.udacity.com.jokesandroidlibrary.JokeActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,17 +38,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void tellJoke(View view) {
-//        Jokes jokes = new Jokes();
-//        Intent intent = new Intent(this, JokeActivity.class);
-//
-//        intent.putExtra(getString(R.string.joke_intent_extra), jokes.tellJoke());
-//        startActivity(intent);
-
-//        new EndpointAsyncTask().execute(this);
-
-
     }
 }

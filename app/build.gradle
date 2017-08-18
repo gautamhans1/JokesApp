@@ -11,12 +11,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -26,7 +31,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.google.android.gms:play-services-ads:11.0.4'
 
     // Java joke library compile time dependency
@@ -43,4 +48,9 @@ dependencies {
 
     // Endpoints
     compile project(path: ':backend', configuration: 'android-endpoints')
+
+    androidTestCompile 'junit:junit:4.12'
+
+    compile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+
 }

@@ -22,6 +22,7 @@ import gradle.udacity.com.jokesandroidlibrary.JokeActivity;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+    public boolean flag = false;
 
     public String joke;
     @BindView(R.id.joke_pb)
@@ -38,6 +39,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, root);
+
 
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
 
@@ -61,15 +63,18 @@ public class MainActivityFragment extends Fragment {
         return root;
     }
 
-    public void getJoke(){
+    public void getJoke() {
         new EndpointAsyncTask().execute(this);
     }
 
     public void showJokeActivity() {
-        Context context = getActivity();
-        Intent intent = new Intent(context, JokeActivity.class);
-        intent.putExtra(context.getString(R.string.joke_intent_extra), joke);
-        context.startActivity(intent);
-        progressBar.setVisibility(View.GONE);
+        if (!flag) {
+            Context context = getActivity();
+            Intent intent = new Intent(context, JokeActivity.class);
+            intent.putExtra(context.getString(R.string.joke_intent_extra), joke);
+            context.startActivity(intent);
+            progressBar.setVisibility(View.GONE);
+
+        }
     }
 }

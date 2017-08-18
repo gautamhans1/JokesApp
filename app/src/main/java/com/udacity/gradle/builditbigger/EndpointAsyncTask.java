@@ -2,7 +2,6 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.example.gautam.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -18,6 +17,7 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
     private static MyApi myApiService = null;
     private Context context;
     private MainActivityFragment mainActivityFragment;
+
 
     @Override
     protected String doInBackground(MainActivityFragment... params) {
@@ -45,6 +45,4 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
         mainActivityFragment.joke = s;
         mainActivityFragment.showJokeActivity();
     }
-
-
 }

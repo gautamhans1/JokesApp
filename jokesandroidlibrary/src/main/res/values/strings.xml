@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JokesAndroidLibrary</string>
+    <string name="joke_intent_extra">JOKE_INTENT_EXTRA</string>
+    <string name="joke_error">the joker library doesn\'t want to tell a joke :(</string>
+</resources>

@@ -40,4 +40,5 @@ dependencies {
 
     // Java joke library compile time dependency
     compile project(":javajokelib")
+    compile project(":jokesandroidlibrary")
 }

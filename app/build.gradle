@@ -33,11 +33,13 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+
+    sourceSets {
+        free {
+            manifest.srcFile 'src/free/AndroidManifest.xml'
+        }
+    }
 }
-
-
-
-
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

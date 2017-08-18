@@ -1,20 +1,37 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
-import android.support.test.espresso.IdlingResource;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.example.Jokes;
+
+/**
+ * Created by Gautam on 18-Aug-17.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
+    private Jokes mJokes;
+    private Context mContext;
+    private MainActivityFragment mMainActivityFragment;
+    private String mResult = null;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
+        mJokes = new Jokes();
+
+        FragmentManager fm = getSupportFragmentManager();
+        mMainActivityFragment = (MainActivityFragment) fm.findFragmentById(R.id.fragment_main);
     }
 
 
@@ -39,4 +56,19 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void tellJoke(View view) {
+        mMainActivityFragment.showProgress();
+        new EndpointsAsyncTask().execute(this);
+
+    }
+
+    public void hideProgress() {
+        mMainActivityFragment.hideProgress();
+    }
+
+    public String getJoke() {
+        return new Jokes().tellJoke();
+    }
+
 }

@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 //        intent.putExtra(getString(R.string.joke_intent_extra), jokes.tellJoke());
 //        startActivity(intent);
 
-        new EndpointAsyncTask().execute(this);
-    }
+//        new EndpointAsyncTask().execute(this);
 
+
+    }
 }

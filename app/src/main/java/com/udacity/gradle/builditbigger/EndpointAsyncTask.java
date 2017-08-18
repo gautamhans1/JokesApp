@@ -7,6 +7,7 @@ import com.example.gautam.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+
 import java.io.IOException;
 
 /**
@@ -21,6 +22,10 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
 
     @Override
     protected String doInBackground(MainActivityFragment... params) {
+
+        mainActivityFragment = params[0];
+        context = mainActivityFragment.getContext();
+
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new
                     AndroidJsonFactory(), null)
@@ -28,10 +33,6 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
             // end options for devappserver
             myApiService = builder.build();
         }
-
-        mainActivityFragment = params[0];
-        context = mainActivityFragment.getContext();
-
 
         try {
             return myApiService.tellJoke().execute().getData();
@@ -45,4 +46,6 @@ public class EndpointAsyncTask extends AsyncTask<MainActivityFragment, Void, Str
         mainActivityFragment.joke = s;
         mainActivityFragment.showJokeActivity();
     }
+
+
 }

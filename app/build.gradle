@@ -27,4 +27,17 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.google.android.gms:play-services-ads:11.0.4'
+
+    // ButterKnife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Timber - Logging
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
+    // debug
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
+
+    // Java joke library compile time dependency
+    compile project(":javajokelib")
 }

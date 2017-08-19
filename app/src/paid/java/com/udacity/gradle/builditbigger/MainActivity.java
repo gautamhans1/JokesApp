@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJoke(View view) {
         mMainActivityFragment.showProgress();
-        new EndpointsAsyncTask().execute(this);
+        new EndpointsAsyncTask(this).execute(this);
 
     }
 

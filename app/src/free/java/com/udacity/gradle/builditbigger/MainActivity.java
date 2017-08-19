@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
     public void tellJoke(View view) {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
-        }else {
+        } else {
             mMainActivityFragment.showProgress();
-            new EndpointsAsyncTask().execute(this);
+            new EndpointsAsyncTask(mContext).execute(this);
         }
 
         mInterstitialAd.setAdListener(new AdListener() {
@@ -87,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
             public void onAdClosed() {
                 requestNewInterstitial();
                 mMainActivityFragment.showProgress();
-                new EndpointsAsyncTask().execute(mContext);
+                new EndpointsAsyncTask(mContext).execute(mContext);
             }
         });
     }
 
     public void execTask() {
-        new EndpointsAsyncTask().execute();
+        new EndpointsAsyncTask(mContext).execute();
     }
 
     public void hideProgress() {

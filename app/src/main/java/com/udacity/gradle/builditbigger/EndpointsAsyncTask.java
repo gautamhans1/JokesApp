@@ -21,6 +21,10 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
+    public EndpointsAsyncTask(Context context) {
+        this.context = context;
+    }
+
     @Override
     protected String doInBackground(Context... params) {
         context = params[0];
@@ -47,7 +51,13 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         Intent intent = new Intent(context, JokeActivity.class);
         intent.putExtra(context.getString(R.string.joke_intent_extra), joke);
         context.startActivity(intent);
-        MainActivity mainActivity = (MainActivity) context;
-        mainActivity.hideProgress();
+
+        // Execption for Test case
+        try {
+            MainActivity mainActivity = (MainActivity) context;
+            mainActivity.hideProgress();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
     }
 }

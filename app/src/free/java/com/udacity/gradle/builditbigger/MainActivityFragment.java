@@ -14,7 +14,7 @@ import com.google.android.gms.ads.AdView;
  * Created by Gautam on 18-Aug-17.
  */
 
-public class MainActivityFragment extends Fragment{
+public class MainActivityFragment extends Fragment {
 
     private ProgressBar mProgressBar;
 

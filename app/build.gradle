@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'gautam'
+            keyPassword 'gautam'
+            storeFile file("$rootDir/keystore.jks")
+            storePassword 'gautam'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
-
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 16
@@ -19,7 +26,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     productFlavors {
         free {
             applicationId "com.udacity.gradle.builditbigger.free"
@@ -29,11 +35,9 @@ android {
             applicationId "com.udacity.gradle.builditbigger.paid"
         }
     }
-
     dexOptions {
         javaMaxHeapSize "4g"
     }
-
     sourceSets {
         free {
             manifest.srcFile 'src/free/AndroidManifest.xml'
@@ -63,31 +67,25 @@ task shutdownDevServer {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     // Java joke library compile time dependency
-    compile project(":javajokelib")
-    compile project(":jokesandroidlibrary")
-
-    // ButterKnife
-
-    // Timber - Logging
-
-    // Endpoints
+    compile project(':javajokelib')
+    compile project(':jokesandroidlibrary')
+    // Backend Endpoint
     compile project(path: ':backend', configuration: 'android-endpoints')
-
-
-
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.google.android.gms:play-services-ads:11.0.4'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
+    // Admob for free flavor
+    freeCompile 'com.google.android.gms:play-services-ads:11.0.4'
+    // ButterKnife
     compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    // Timber - Logging
     compile 'com.jakewharton.timber:timber:4.5.1'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
-    compile 'com.android.support.test.espresso:espresso-contrib:2.2.2'
     compile 'com.android.support:support-v4:25.3.1'
     androidTestCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
